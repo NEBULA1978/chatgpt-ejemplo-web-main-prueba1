@@ -1,4 +1,4 @@
-const bicicletasContenedor = document.getElementById("bicicletas-contenedor");
+        const bicicletasContenedor = document.getElementById("bicicletas-contenedor");
 
 // Obtener los datos de las bicicletas
 fetch("data.json")

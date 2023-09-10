@@ -75,3 +75,45 @@ body {
     width: 100%;
     object-fit: cover;
 }
+
+/* Estilos para pantallas pequeñas */
+@media (max-width: 768px) {
+  body {
+    font-size: 16px;
+    /* Tamaño de fuente más grande para pantallas pequeñas */
+  }
+
+  header {
+    padding: 5px;
+    /* Reducción del espacio en el encabezado */
+  }
+
+  nav ul {
+    text-align: center;
+    /* Centrar los elementos del menú en pantallas pequeñas */
+  }
+
+  nav li {
+    display: block;
+    /* Mostrar los elementos del menú en bloques para apilarlos */
+    margin-right: 0;
+    /* Eliminar el margen derecho */
+    margin-bottom: 10px;
+    /* Agregar margen inferior entre elementos del menú */
+  }
+
+  main {
+    padding: 10px;
+    /* Agregar espaciado adicional al contenido principal */
+  }
+
+  section {
+    padding: 15px;
+    /* Aumentar el espacio alrededor de las secciones */
+  }
+
+  #bicicletas-contenedor {
+    grid-template-columns: 1fr;
+    /* Hacer que las bicicletas se muestren en una sola columna */
+  }
+}
