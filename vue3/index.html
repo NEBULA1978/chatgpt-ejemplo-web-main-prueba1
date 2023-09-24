@@ -8,9 +8,99 @@
 </head>
 <body>
     <div id="app">
-        <mi-componente></mi-componente>
+        <header>
+            <h1>Alquiler de bicicletas</h1>
+        </header>
+        <nav>
+            <ul>
+                <li><a href="#bicicletas">Bicicletas</a></li>
+                <li><a href="#camisetas">Camisetas</a></li>
+                <li><a href="#ubicacion">Ubicación</a></li>
+                <li><a href="#reservas">Reservas</a></li>
+            </ul>
+        </nav>
+        <main>
+            <section id="bicicletas">
+                <h2>Bicicletas disponibles</h2>
+                <select v-model="filtroModelo">
+                    <option value="">Todos los modelos</option>
+                    <option value="Bicicleta de montaña">Bicicleta de montaña</option>
+                    <option value="Bicicleta de carretera">Bicicleta de carretera</option>
+                    <option value="Bicicleta de paseo">Bicicleta de paseo</option>
+                </select>
+                <select v-model="filtroPrecio">
+                    <option value="0">Todos los precios</option>
+                    <option value="5">Hasta $5</option>
+                    <option value="10">Hasta $10</option>
+                    <option value="15">Hasta $15</option>
+                </select>
+                <div id="bicicletas-contenedor">
+                    <div class="bicicleta" v-for="bicicleta in bicicletasFiltradas" :key="bicicleta.nombre">
+                        <img :src="bicicleta.img" :alt="bicicleta.modelo">
+                        <h3>{{ bicicleta.nombre }}</h3>
+                        <p>{{ bicicleta.modelo }}</p>
+                        <p>Precio: ${{ bicicleta.precio }}</p>
+                    </div>
+                </div>
+            </section>
+            <section id="camisetas">
+                <h2>Camisetas disponibles</h2>
+                <!-- Agrega aquí el contenido de camisetas si lo tienes -->
+            </section>
+            <section id="ubicacion">
+                <h2>Ubicación</h2>
+                <p>Nuestra tienda se encuentra en la calle 123, en la ciudad de XYZ.</p>
+            </section>
+            <section id="reservas">
+                <h2>Reservas</h2>
+                <p>Para hacer una reserva, por favor llámenos al 555-555-5555 o envíenos un correo electrónico a info@bicyclerentals.com</p>
+            </section>
+        </main>
+        <footer>
+            <p>Copyright © 2021 Bicycle Rentals</p>
+        </footer>
     </div>
+
+    <!-- Incluir Vue.js 3 -->
     <script src="https://cdn.jsdelivr.net/npm/vue@3.2.16/dist/vue.global.prod.js"></script>
-    <script src="main.js"></script>
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    bicicletas: [], // Aquí se almacenarán los datos de las bicicletas
+                    filtroModelo: "", // Filtro por modelo
+                    filtroPrecio: 0 // Filtro por precio
+                };
+            },
+            computed: {
+                // Filtrar las bicicletas según los criterios de filtro
+                bicicletasFiltradas() {
+                    return this.bicicletas.filter(bicicleta => {
+                        return (
+                            (this.filtroModelo === "" || bicicleta.modelo === this.filtroModelo) &&
+                            (this.filtroPrecio === 0 || bicicleta.precio <= this.filtroPrecio)
+                        );
+                    });
+                }
+            },
+            methods: {
+                // Función para obtener los datos de las bicicletas
+                obtenerBicicletas() {
+                    fetch("data.json")
+                        .then(response => response.json())
+                        .then(data => {
+                            this.bicicletas = data.bicicletas;
+                        })
+                        .catch(error => console.error(error));
+                }
+            },
+            mounted() {
+                // Obtener los datos de las bicicletas al cargar la página
+                this.obtenerBicicletas();
+            }
+        });
+
+        app.mount('#app'); // Montar la aplicación en el elemento con el id "app"
+    </script>
 </body>
 </html>
