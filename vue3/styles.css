@@ -24,3 +24,31 @@ nav ul {
 }
 
 /* Estilos adicionales según tus necesidades */
+
+/* Establecer grid para bicicletas en tabletas */
+@media (min-width: 768px) {
+    #bicicletas-contenedor {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        /* Dos columnas en tabletas */
+        gap: 20px;
+        /* Espacio entre bicicletas */
+    }
+}
+
+/* Establecer grid para bicicletas en pantallas de PC */
+@media (min-width: 1200px) {
+    #bicicletas-contenedor {
+        grid-template-columns: repeat(3, 1fr);
+        /* Tres columnas en pantallas de PC */
+    }
+}
+
+/* Estilo para las bicicletas */
+.bicicleta {
+    background-color: #fff;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+}
