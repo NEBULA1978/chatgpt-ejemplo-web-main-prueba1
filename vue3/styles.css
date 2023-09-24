@@ -17,4 +17,10 @@ mi-componente {
     border-radius: 5px;
 }
 
+/* Estilo para quitar los puntos negros de la lista */
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
 /* Estilos adicionales según tus necesidades */

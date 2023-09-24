@@ -75,12 +75,21 @@
             computed: {
                 // Filtrar las bicicletas según los criterios de filtro
                 bicicletasFiltradas() {
-                    return this.bicicletas.filter(bicicleta => {
-                        return (
-                            (this.filtroModelo === "" || bicicleta.modelo === this.filtroModelo) &&
-                            (this.filtroPrecio === 0 || bicicleta.precio <= this.filtroPrecio)
-                        );
-                    });
+                    let bicicletasFiltradas = this.bicicletas;
+                    
+                    if (this.filtroModelo !== "") {
+                        bicicletasFiltradas = bicicletasFiltradas.filter(bicicleta => {
+                            return bicicleta.modelo === this.filtroModelo;
+                        });
+                    }
+                    
+                    if (this.filtroPrecio > 0) {
+                        bicicletasFiltradas = bicicletasFiltradas.filter(bicicleta => {
+                            return bicicleta.precio <= this.filtroPrecio;
+                        });
+                    }
+                    
+                    return bicicletasFiltradas;
                 }
             },
             methods: {
