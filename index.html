@@ -1,254 +1,148 @@
-<!DOCTYPE html>
 <html>
-
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-        <title>Alquiler de bicicletas</title>
-        <!-- <link rel="stylesheet" type="text/css" href="styles.css"> -->
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-    }
-
-    header {
-        background-color: #8B0000;
-        color: white;
-        text-align: center;
-        padding: 10px;
-    }
-
-    nav {
-        background-color: #FFA07A;
-        text-align: center;
-    }
-
-    nav ul {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-    }
-
-    nav li {
-        display: inline-block;
-        margin-right: 10px;
-    }
-
-    nav a {
-        color: black;
-        text-decoration: none;
-        padding: 10px;
-    }
-
-    nav a:hover {
-        background-color: #ff7f50;
-    }
-
-    main {
-        margin: 0 auto;
-        max-width: 800px;
-        padding: 10px; /* Agregar espaciado adicional al contenido principal */
-    }
-
-    section {
-        margin-bottom: 20px;
-        padding: 20px;
-        background-color: #ffb6c1;
-    }
-
-    section h2 {
-        margin-top: 0;
-    }
-
-footer {
-    background-color: #8B0000;
-    color: white;
-    text-align: center;
-    padding: 10px;
-    max-width: 800px; /* Limitar el ancho del footer al igual que el contenido principal */
-    margin: 0 auto; /* Centrar el footer horizontalmente */
-}
-
-
-    #bicicletas-contenedor {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        grid-gap: 10px;
-    }
-
-    .bicicleta {
-        width: 100%;
-    }
-
-    .bicicleta img {
-        width: 100%;
-        object-fit: cover;
-    }
-
-    /* Estilos para pantallas pequeñas */
-    @media (max-width: 768px) {
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alquiler de bicicletas</title>
+    <style>
         body {
-            font-size: 16px; /* Tamaño de fuente más grande para pantallas pequeñas */
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
         }
 
-        header {
-            padding: 5px; /* Reducción del espacio en el encabezado */
+        #header {
+            background-color: #8B0000;
+            color: white;
+            text-align: center;
+            padding: 10px;
         }
 
-        nav ul {
-            text-align: center; /* Centrar los elementos del menú en pantallas pequeñas */
+        #nav {
+            background-color: #FFA07A;
+            text-align: center;
         }
 
-        nav li {
-            display: block; /* Mostrar los elementos del menú en bloques para apilarlos */
-            margin-right: 0; /* Eliminar el margen derecho */
-            margin-bottom: 10px; /* Agregar margen inferior entre elementos del menú */
+        #nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
         }
 
-        main {
-            padding: 10px; /* Agregar espaciado adicional al contenido principal */
+        #nav li {
+            display: inline-block;
+            margin-right: 10px;
         }
 
-        section {
-            padding: 15px; /* Aumentar el espacio alrededor de las secciones */
+        #nav a {
+            color: black;
+            text-decoration: none;
+            padding: 10px;
         }
 
-        #bicicletas-contenedor {
-            grid-template-columns: 1fr; /* Hacer que las bicicletas se muestren en una sola columna */
+        #nav a:hover {
+            background-color: #ff7f50;
         }
-    }
-</style>
 
-
-    </head>
-
-    <body>
-        <header>
-            <h1>Alquiler de bicicletas</h1>
-        </header>
-        <nav>
-            <ul>
-                <li><a href="#bicicletas">Bicicletas</a></li>
-                <li><a href="#camisetas">Camisetas</a></li>
-                <li><a href="#ubicacion">Ubicación</a></li>
-                <li><a href="#reservas">Reservas</a></li>
-            </ul>
-        </nav>
-        <main>
-
-            <!-- Filtro por modelo -->
-            <select id="filtro-modelo">
-                <option value>Todos los modelos</option>
-                <option value="Bicicleta de montaña">Bicicleta de montaña</option>
-                <option value="Bicicleta de carretera">Bicicleta de carretera</option>
-                <option value="Bicicleta de paseo">Bicicleta de paseo</option>
-                <option value="Camisetas">Camisetas de manga corta y larga</option>
-            </select>
-
-            <!-- Filtro por precio -->
-            <select id="filtro-precio">
-                <option value="0">Todos los precios</option>
-                <option value="5">Hasta $5</option>
-                <option value="10">Hasta $10</option>
-                <option value="15">Hasta $15</option>
-            </select>
-
-            <section id="bicicletas">
-                <h2>Bicicletas disponibles</h2>
-                <div id="bicicletas-contenedor"></div>
-            </section>
-            <section id="camisetas">
-                <h2>Camisetas disponibles</h2>
-                <div id="camisetas-contenedor"></div>
-            </section>
-
-            <section id="ubicacion">
-                <h2>Ubicación</h2>
-                <p>Nuestra tienda se encuentra en la calle 123, en la ciudad de
-                    XYZ.</p>
-            </section>
-
-            <section id="reservas">
-                <h2>Reservas</h2>
-                <p>Para hacer una reserva, por favor llámenos al 555-555-5555 o
-                    envíenos un correo electrónico a
-                    info@bicyclerentals.com</p>
-            </section>
-        </main>
-        <footer>
-            <p>Copyright © 2021 Bicycle Rentals</p>
-        </footer>
-        <!-- <script src="main.js"></script> -->
-        <script>
-        const bicicletasContenedor = document.getElementById("bicicletas-contenedor");
-
-// Obtener los datos de las bicicletas
-fetch("data.json")
-    .then(response => response.json())
-    .then(data => {
-        // Almacenar los datos en una variable global
-        window.bicicletas = data.bicicletas;
-        // Mostrar las bicicletas en la página
-        mostrarBicicletas();
-    })
-    .catch(error => console.error(error));
-
-// Función para mostrar las bicicletas en la página
-function mostrarBicicletas() {
-    const bicicletasContenedor = document.getElementById("bicicletas-contenedor");
-    bicicletasContenedor.innerHTML = "";
-
-    // Obtener los valores seleccionados en los filtros
-    const filtroModelo = document.getElementById("filtro-modelo").value;
-    const filtroPrecio = parseFloat(document.getElementById("filtro-precio").value);
-
-    console.log(filtroPrecio);
-
-    // Recorrer cada bicicleta
-    window.bicicletas.forEach(function (bicicleta) {
-        // Comprobar si la bicicleta cumple con los criterios de los filtros
-        if ((filtroModelo === "" || bicicleta.modelo === filtroModelo) && (filtroPrecio === 0 || bicicleta.precio <= filtroPrecio)
-        ) {
-            // Crear un elemento div para la bicicleta
-            const bicicletaDiv = document.createElement("div");
-            bicicletaDiv.classList.add("bicicleta");
-            // Crear una imagen para la bicicleta
-            const bicicletaImg = document.createElement("img");
-            bicicletaImg.src = bicicleta.img;
-            bicicletaImg.alt = bicicleta.modelo;
-            bicicletaDiv.appendChild(bicicletaImg);
-
-            // Crear un h3 para el nombre de la bicicleta
-            const bicicletaNombre = document.createElement("h3");
-            bicicletaNombre.innerHTML = bicicleta.nombre;
-            bicicletaDiv.appendChild(bicicletaNombre);
-
-            // Crear un p para el modelo de la bicicleta
-            const bicicletaModel = document.createElement("p");
-            bicicletaModel.innerHTML = bicicleta.modelo;
-            bicicletaDiv.appendChild(bicicletaModel);
-
-            // Crear un p para el precio de la bicicleta
-            const bicicletaPrecio = document.createElement("p");
-            bicicletaPrecio.innerHTML = "$" + bicicleta.precio;
-            bicicletaDiv.appendChild(bicicletaPrecio);
-
-
-
-
-            // Agregar el elemento div a la página
-            bicicletasContenedor.appendChild(bicicletaDiv);
+        #main {
+            margin: 0 auto;
+            max-width: 800px;
+            padding: 10px;
         }
-    });
-}
 
-// Agregar eventos a los filtros para que al cambiar su valor, se vuelva a mostrar las bicicletas
-document.getElementById("filtro-modelo").addEventListener("change", mostrarBicicletas);
-document.getElementById("filtro-precio").addEventListener("change", mostrarBicicletas);
-    </script>
+        section#bicicletas {
+            margin-bottom: 20px;
+            padding: 20px;
+            background-color: #ffb6c1;
+        }
 
-    </body>
+        section#camisetas {
+            margin-bottom: 20px;
+            padding: 20px;
+            background-color: #ffb6c1;
+        }
 
+        section#ubicacion {
+            margin-bottom: 20px;
+            padding: 20px;
+            background-color: #ffb6c1;
+        }
+
+        section#reservas {
+            margin-bottom: 20px;
+            padding: 20px;
+            background-color: #ffb6c1;
+        }
+
+        section h2 {
+            margin-top: 0;
+        }
+
+        #footer {
+            background-color: #8B0000;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Alquiler de bicicletas</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#Bicicletas">Bicicletas</a></li>
+            <li><a href="#Camisetas">Camisetas</a></li>
+            <li><a href="#Ubicación">Ubicación</a></li>
+            <li><a href="#Reservas">Reservas</a></li>
+
+        </ul>
+    </nav>
+    <main>
+        <!-- Filtro por modelo -->
+        <select id="filtro-modelo">
+            <option value="Todos los modelos">Todos los modelos</option>
+            <option value="Bicicleta de montaña">Bicicleta de montaña</option>
+            <option value="Bicicleta de carretera">Bicicleta de carretera</option>
+            <option value="Bicicleta de paseo">Bicicleta de paseo</option>
+            <option value="Camisetas de manga corta y larga">Camisetas de manga corta y larga</option>
+
+        </select>
+
+        <!-- Filtro por precio -->
+        <select id="filtro-precio">
+            <option value="Todos los precios">Todos los precios</option>
+            <option value="Hasta $5">Hasta $5</option>
+            <option value="Hasta ${10}">Hasta ${10}</option>
+            <option value="Hasta ${15}">Hasta ${15}</option>
+
+        </select>
+
+        <section id="bicicletas">
+            <h2>Bicicletas disponibles</h2>
+            <div id="bicicletas-contenedor"></div>
+        </section>
+
+        <section id="camisetas">
+            <h2>Camisetas disponibles</h2>
+            <div id="camisetas-contenedor"></div>
+        </section>
+
+        <section id="ubicacion">
+            <h2>Ubicacion disponibles</h2>
+            <div id="ubicacion-contenedor"></div>
+        </section>
+
+        <section id="reservas">
+            <h2>Reservas disponibles</h2>
+            <div id="reservas-contenedor"></div>
+        </section>
+
+    </main>
+    <footer>
+        <p>Copyright © 2021 Bicycle Rentals</p>
+    </footer>
+</body>
 </html>
+
