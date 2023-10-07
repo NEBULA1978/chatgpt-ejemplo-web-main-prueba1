@@ -1,4 +1,4 @@
-        const bicicletasContenedor = document.getElementById("bicicletas-contenedor");
+const bicicletasContenedor = document.getElementById("bicicletas-contenedor");
 
 // Obtener los datos de las bicicletas
 fetch("data.json")
@@ -47,9 +47,12 @@ function mostrarBicicletas() {
             bicicletaDiv.appendChild(bicicletaModel);
 
             // Crear un p para el precio de la bicicleta
-            const bicicletaPrice = document.createElement("p");
-            bicicletaPrice.innerHTML = "$"+bicicleta.precio;            
-            bicicletaDiv.appendChild(bicicletaPrice);
+            const bicicletaPrecio = document.createElement("p");
+            bicicletaPrecio.innerHTML = "$" + bicicleta.precio;
+            bicicletaDiv.appendChild(bicicletaPrecio);
+
+
+
 
             // Agregar el elemento div a la página
             bicicletasContenedor.appendChild(bicicletaDiv);
