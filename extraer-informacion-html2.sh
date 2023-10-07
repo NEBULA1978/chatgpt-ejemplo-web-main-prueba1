@@ -7,6 +7,41 @@ archivo_html="index.html"
 html_content=$(<"$archivo_html")
 
 # Usar expresiones regulares para extraer información
+
+# Aquí tienes los comentarios para cada expresión regular:
+
+# Expresión regular: <\w+>
+
+# Comentario:
+
+#     Extrae cualquier etiqueta HTML, es decir, cualquier elemento que comience con un signo menor (<) y termine con un signo mayor (>).
+
+# Explicación:
+
+#     La expresión regular <\w+> utiliza el metacarácter \w para indicar que cualquier carácter alfanumérico o guión bajo es válido. El carácter + indica que el metacarácter \w debe repetirse una o más veces.
+
+# Expresión regular: id=\"[^\"]+\"
+
+# Comentario:
+
+#     Extrae el valor del atributo id de una etiqueta HTML. El valor del atributo id está encerrado entre comillas dobles (").
+
+# Explicación:
+
+#     La expresión regular id=\"[^\"]+\" utiliza el metacarácter \w para indicar que cualquier carácter alfanumérico o guión bajo es válido. El carácter + indica que el metacarácter \w debe repetirse una o más veces. Los caracteres "' indican que el valor del atributo id está encerrado entre comillas dobles.
+
+# Expresión regular: class=\"[^\"]+\"
+
+# Comentario:
+
+#     Extrae el valor del atributo class de una etiqueta HTML. El valor del atributo class está encerrado entre comillas dobles (").
+
+# Explicación:
+
+#     La expresión regular class=\"[^\"]+\" es similar a la expresión regular id=\"[^\"]+\", pero se utiliza para extraer el valor del atributo class.
+
+
+
 # Etiquetas
 etiquetas=$(grep -oP '<\w+>' <<< "$html_content")
 
