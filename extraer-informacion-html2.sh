@@ -36,6 +36,20 @@ function extract_html_attribute() {
     fi
 }
 
+# Expresiones regulares
+#
+# '<\w+>' : Extrae cualquier etiqueta HTML, es decir, cualquier elemento
+#            que comience con un signo menor (<) y termine con un signo
+#            mayor (>).
+#
+# 'id=\"[^\"]+\"' : Extrae el valor del atributo `id` de una etiqueta
+#                    HTML. El valor del atributo `id` está encerrado entre
+#                    comillas dobles (").
+#
+# 'class=\"[^\"]+\"' : Extrae el valor del atributo `class` de una etiqueta
+#                      HTML. El valor del atributo `class` está encerrado
+#                      entre comillas dobles (").
+
 # Extraer la información del archivo HTML
 header_id=$(extract_html_attribute "$html_content" "header_id")
 header_h1=$(extract_html_attribute "$html_content" "header_h1")
